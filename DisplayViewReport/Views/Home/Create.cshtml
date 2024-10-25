@@ -1,0 +1,13 @@
+﻿
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <div>
+        <label>Name</label>
+        @Html.TextBox("name", null, new { @class = "form-control", placeholder = "Enter Product Name" })
+    </div>
+    <div>
+        <label>Price</label>
+        @Html.TextBox("price", null, new { @class = "form-control", placeholder = "Enter Product Price", type = "number", step = "0.01" })
+    </div>
+    <input type="submit" value="Create Product" class="btn btn-primary" />
+}

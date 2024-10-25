@@ -1,0 +1,12 @@
+﻿@*@{
+    ViewBag.Title = "Test Database Connection";
+}
+
+<h2>Test Database Connection</h2>
+
+<p>@ViewBag.Message</p>*@
+@using ReportViewerForMvc;
+@{
+    ViewBag.Title = "ReportProducts";
+}
+@Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer)

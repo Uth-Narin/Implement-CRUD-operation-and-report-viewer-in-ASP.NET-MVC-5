@@ -1,0 +1,55 @@
+﻿@model List<DisplayViewReport.Models.Product>
+
+@{
+    ViewBag.Title = "Product Management";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Product Management & Report Viewer</h2>
+
+    <!-- Create Product Form -->
+    <h3>Create Product</h3>
+    @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { @class = "form-inline mb-4" }))
+    {
+        <div class="form-group mr-2">
+            @Html.Label("name", "Product Name", new { @class = "sr-only" })
+            @Html.TextBox("name", null, new { @class = "form-control", placeholder = "Enter Product Name" })
+        </div>
+        <div class="form-group mr-2">
+            @Html.Label("price", "Product Price", new { @class = "sr-only" })
+            @Html.TextBox("price", null, new { @class = "form-control", placeholder = "Enter Product Price", type = "number", step = "0.01" })
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    }
+
+    <!-- Display All Products -->
+    <h3>All Products</h3>
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="thead-light">
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.ProductId</td>
+                    <td>@product.Name</td>
+                    <td>@product.Price.ToString("C")</td> <!-- Format as currency -->
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = product.ProductId }, new { @class = "btn btn-warning btn-sm" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = product.ProductId }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+
+
